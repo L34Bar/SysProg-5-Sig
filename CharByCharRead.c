@@ -41,10 +41,15 @@ int main(int argc, char **argv) {
 	twitch = fopen(argv[1], "r");
 	fin = argv;	
 
-	if(!twitch) {
-		fprintf(stderr, "Couldn't open file %s!\n\n", argv[1]);			
-		perror("Error");
-		exit(errno);	
+	//In case of file not existing or not stated
+	if(twitch == NULL) {
+		printf("Error: not enough parameters.\n");
+		printf("usage: ./ProgramName file.extension.\n");
+		printf("Example: ./ProgramName project.docx.\n");
+		printf("Example: ./ProgramName research.zip.\n");
+		printf("Example: ./ProgramName fun.txt\n");
+		printf("NOTE: File must also exist! Check if file exists!\n");
+		exit(errno);
 		}
 	else {
 		printf("Opened file %s.\n\n", argv[1]);
